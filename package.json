@@ -1,0 +1,17 @@
+{
+  "name": "meteor-generate",
+  "version": "0.0.1",
+  "description": "Generate Meteor scaffolding on demand",
+  "keywords": [ "meteor", "scaffold"],
+  "author": "Adam Brodzinski",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdamBrodzinski/meteor-generate.git"
+  },
+
+  "bin": { "mgen": "./bin/mgen" },
+
+  "dependencies": {
+  }
+}
