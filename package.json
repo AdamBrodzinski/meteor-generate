@@ -13,5 +13,8 @@
   "bin": { "mgen": "./bin/mgen" },
 
   "dependencies": {
+    "commander": "*",
+    "mkdirp": "*",
+    "cpr": "*"
   }
 }

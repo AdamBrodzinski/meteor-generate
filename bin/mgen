@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-if (process.argv.length !== 3) {
-    console.log('help here');
-}
+// fire up Commander and parse params
+require('../lib/commands');
 
-require('../lib/component').run();
