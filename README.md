@@ -1,12 +1,23 @@
-# Meteor Generate 
-### Generate scaffolding for Meteor 
+## Generate Scaffolding for Meteor
+
+Automate the common tasks used when building a Meteor app. Create 'pages', components,  controllers, collections & more.
+User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
+
+### Init 
+`mgen init` Scaffolds out the common folder structure. Additional folders & files are added as needed with additional 
+generate commands. See the Wiki page for example useage and file structure.
 
 
-### Creates a parent component with a single child component
+### Component
+`mgen comp <name>` Bits of re-useable page independent widgets. These are often things like headers, footers, posts
+parent with child post, etc... See the Wiki page for example useage and file structure.
 
-Creates a post folder in `client/components/post`. This folder
-contains post.html, post.js, and _post.scss files. It
-also appends an include for sass in `client/sass/_components.scss`
 
-Usage:
-`mgen comp post`
+### Pages
+Coming Soon
+
+### Controllers
+Coming Soon
+
+### Collections
+Coming Soon
