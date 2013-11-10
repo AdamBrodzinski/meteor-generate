@@ -8,13 +8,14 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 generate commands. See the Wiki page for example useage and file structure.
 
 
-### Component
+### Components
 `mgen comp <name>` Bits of re-useable page independent widgets. These are often things like headers, footers, posts
 parent with child post, etc... See the Wiki page for example useage and file structure.
 
 
 ### Pages
-Coming Soon
+`mgen page <name>` Create conceptual 'pages'. Creates template, script, and stylesheet in 'client/pages/'.  
+Note, this will not generate controllers and routes. See the Wiki page for example useage and file structure.
 
 ### Controllers
 Coming Soon
