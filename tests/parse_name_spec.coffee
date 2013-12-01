@@ -4,6 +4,18 @@ parseName = require '../lib/parse_name'
 
 describe 'parseName', ->
 
+  it 'should not change a one word singular root name', ->
+    name = parseName 'foo'
+    name.camel.should.equal  'foo'
+    name.snake.should.equal  'foo'
+    name.hyphen.should.equal 'foo'
+
+  it 'should not change a one word plural root name' #pending
+    #name = parseName 'bars'
+    #name.camelP.should.equal  'bars'
+    #name.snakeP.should.equal  'bars'
+    #name.hyphenP.should.equal 'bars'
+
   # ----------- Convert to CamelCase -------------
 
   it 'should convert singular root name to singular camel case', ->
