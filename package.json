@@ -16,5 +16,13 @@
     "commander": "*",
     "change-case": "*",
     "fs.extra": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "coffee-script": "*"
+  },
+  "scripts" : { 
+    "test" : "make test"
   }
 }
