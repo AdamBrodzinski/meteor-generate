@@ -1,0 +1,21 @@
+<template name='posts'> <div class='posts'>
+
+
+  <h1>Posts Page</h1>
+  <p>Find me in client/pages/index.html</p>
+
+  <p><b>Note</b>, there is extra css, html and js here for demo purposes to get a feel for general structure. <br>
+  I'll add examples of just the generate command output soon.</p>
+
+  <ul>
+  {{#each this}}
+    <li>
+      <a href="/posts/{{_id}}">{{title}}</a>
+    </li>
+  {{/each}}
+  </ul>
+  
+  <br>
+  <a href="{{pathFor 'newPost'}}">Create New Post</a>
+
+</div></template>

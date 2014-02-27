@@ -1,0 +1,21 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "iron-router": {},
+      "parse-form": {}
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.2",
+        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
+      },
+      "parse-form": {
+        "git": "https://github.com/AdamBrodzinski/parse-form.git",
+        "tag": "v0.1.0",
+        "commit": "fb5bf374bee3b4c725da31ac011cf209a0248852"
+      }
+    }
+  }
+}
