@@ -1,5 +1,5 @@
 //------------------------------------------------
-//           AppController Controller
+//           Application Controller
 //------------------------------------------------
 
 /*global AppController:true, RouteController */
