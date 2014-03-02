@@ -8,5 +8,4 @@ Router.map(function () {
 
   this.route('homeTemp', { path: '/'});
 
-}); // _end_router_
-
+});//<end-routes>
