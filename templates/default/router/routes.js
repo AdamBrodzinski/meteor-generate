@@ -6,6 +6,4 @@ Router.configure({
 
 Router.map(function () {
 
-  this.route('homeTemp', { path: '/'});
-
 });//<end-routes>
