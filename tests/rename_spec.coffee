@@ -11,3 +11,19 @@ describe 'Change Case Module', ->
     newText = rename "bars", "Hello __name-plural-camel__ End"
     newText.should.equal "Hello bars End"
 
+  it 'should transform a hyphenated singular variable', ->
+    newText = rename "foo_bars", "Hello __name-singular-hyphen__ End"
+    newText.should.equal "Hello foo-bar End"
+
+  it 'should transform a hyphenated plural variable', ->
+    newText = rename "foo_bars", "Hello __name-plural-hyphen__ End"
+    newText.should.equal "Hello foo-bars End"
+
+  it 'should transform a snake_case singular variable', ->
+    newText = rename "foo_bars", "Hello __name-singular-snake__ End"
+    newText.should.equal "Hello foo_bar End"
+
+  it 'should transform a snake_case plural variable', ->
+    newText = rename "foo_bars", "Hello __name-plural-snake__ End"
+    newText.should.equal "Hello foo_bars End"
+
