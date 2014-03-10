@@ -27,3 +27,11 @@ describe 'Change Case Module', ->
     newText = rename "foo_bars", "Hello __name-plural-snake__ End"
     newText.should.equal "Hello foo_bars End"
 
+  it 'should transform a PascalCase singular variable', ->
+    newText = rename "foo_bars", "Hello __name-singular-pascal__ End"
+    newText.should.equal "Hello FooBar End"
+
+  it 'should transform a PascalCase plural variable', ->
+    newText = rename "foo_bar", "Hello __name-plural-pascal__ End"
+    newText.should.equal "Hello FooBars End"
+
