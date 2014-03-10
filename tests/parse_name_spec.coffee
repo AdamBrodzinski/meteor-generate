@@ -89,3 +89,23 @@ describe '#parseName', ->
     name = parseName 'bar_post'
     name.hyphenPlural.should.equal 'bar-posts'
 
+  # ----------- Convert to PascalCase -------------
+
+  it 'should convert singular root name to singular pascal case', ->
+    name = parseName 'foo_bar'
+    name.pascalSingular.should.equal 'FooBar'
+    name.pascal.should.equal  'FooBar'
+
+  it 'should convert plural root name to singular pascal case', ->
+    name = parseName 'foo_bars'
+    name.pascalSingular.should.equal 'FooBar'
+  
+  it 'should convert plural root name to plural pascal case', ->
+    name = parseName 'bar_posts'
+    name.pascalPlural.should.equal 'BarPosts'
+    name.pascal.should.equal  'BarPosts'
+
+  it 'should convert singular root name to plural pascal case', ->
+    name = parseName 'bar_post'
+    name.pascalPlural.should.equal 'BarPosts'
+
