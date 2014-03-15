@@ -1,5 +1,6 @@
- // destroy a __nameS-title__
-__name-pascal__.destroy = function(data) {
-  console.log('Destroy post');
+ // destroy a __name-singular-pascal__
+__name-plural-pascal__.destroy = function(data, callback) {
+  console.log('Fired Destroy __name-singular-pascal__', data);
+  Meteor.call('__name-plural-pascal__.destroy', data, callback);
 };
 

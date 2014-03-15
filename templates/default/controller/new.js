@@ -1,9 +1,14 @@
- // show page for creating a single __nameS-title__ : /__name-hyphen__/new/:id
-__name-pascal__.New = AppController.extend({
-  template: 'new__name-pascal__',
+// page for creating a single __name-singular-pascal__ - /__name-plural-hyphen__/new/:id
+__name-plural-pascal__.new = AppController.extend({
+  template: 'new__name-singular-pascal__',
 
-  //action: function() {
-  //},
+  before: function() {
+
+  },
+
+  after: function() {
+
+  }
 });
 
   

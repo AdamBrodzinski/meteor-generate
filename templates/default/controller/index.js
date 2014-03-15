@@ -1,9 +1,14 @@
- // show page for all __name-pascal__ : /__name-hyphen__
-__name-pascal__.Index = AppController.extend({
-  template: '__name-camel__',
+// page for a list of __name-plural-pascal__ - /__name-plural-hyphen__
+__name-plural-pascal__.index = AppController.extend({
+  template: '__name-plural-camel__',
 
-  //action: function() {
-  //},
+  before: function() {
+
+  },
+
+  after: function() {
+
+  }
 });
 
  
