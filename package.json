@@ -15,6 +15,15 @@
   "dependencies": {
     "commander": "*",
     "change-case": "*",
-    "fs.extra": "*"
+    "fs.extra": "*",
+    "pluralize": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "coffee-script": "*"
+  },
+  "scripts" : { 
+    "test" : "make test"
   }
 }
