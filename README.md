@@ -42,7 +42,7 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 
 
 ### Pages
-`mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet in 'client/pages/'.  
+`mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet. No controllers are generated.  
 If no action flag is passed in, all actions will be created. `mgen page posts --index` creates the following:
 
 ```
@@ -56,7 +56,28 @@ If no action flag is passed in, all actions will be created. `mgen page posts --
 
 
 ### Controllers
-Coming Soon
+`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `Posts` namespace. This is used to store controllers, helpers, etc... for that resource.  
+Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.
+`mgen controller posts --show` generates the following:  
+
+```
+├── both
+│   ├── controllers
+│   │   ├── app.js
+│   │   └── posts.js
+│   ├── lib
+│   │   └── namespaces.js   // adds a `db` namespace and `Posts` namespace
+│   └── routes.js
+│
+└── client
+    └── pages
+        └── posts
+            ├── show.html
+            ├── show.js
+            └── _show.scss
+
+```
+
 
 ### Collections
 Coming Soon
