@@ -77,6 +77,21 @@ See [Example Controller][3]  - `mgen controller posts --show` generates the foll
 ```
 
 
+### Packages
+
+`mgen package <name>` Creates a Meteor smart package. Includes smart.json for Atmosphere (options flag coming soon). `mgen package mixpanel` Generates the following: 
+
+```
+└── packages
+    └── mixpanel
+        ├── both.js
+        ├── client.js
+        ├── package.js
+        ├── server.js
+        └── smart.json
+```
+
+
 ### Collections
 Coming Soon
 
