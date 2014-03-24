@@ -3,7 +3,6 @@
 Automate the common tasks used when building a Meteor app. Create 'pages', components,  controllers, collections & more.
 User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
 
-***[Example blog][1] fire it up to see the general structure it generates.*** **note this has extra logic added in**
 
 ### Init 
 `mgen init <project_name>` Runs Meteor create command and scaffolds out a basic app structure.  
@@ -29,8 +28,17 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 
 
 ### Components
-`mgen comp <name>` Bits of re-useable page independent widgets. These are often things like headers, footers, posts
-parent with child post, etc...  Wiki page coming soon with example useage and file structure.
+`mgen comp <name>` Re-useable widgets that are not tied to a page. These should be able to be included in any page on the app. These are typically things like the header, footer, etc... `mgen comp header` outputs the follwing:  
+
+```
+└── client
+    └── components
+        └── header
+            ├── _header.scss
+            ├── header.html
+            └── header.js
+```
+
 
 
 ### Pages
@@ -52,6 +60,9 @@ Coming Soon
 
 ### Collections
 Coming Soon
+
+
+***[Example blog][1] fire it up to see the general structure it generates.*** **note this has extra logic added in**
 
 [1]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog
 [2]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog/client/pages/posts
