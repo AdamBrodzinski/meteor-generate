@@ -56,9 +56,8 @@ If no action flag is passed in, all actions will be created. `mgen page posts --
 
 
 ### Controllers
-`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `Posts` namespace. This is used to store controllers, helpers, etc... for that resource.  
-Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.
-`mgen controller posts --show` generates the following:  
+`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `Posts` namespace. This is used to store controllers, helpers, etc... for that resource. Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.  
+See [Example Controller][3]  - `mgen controller posts --show` generates the following:  
 
 ```
 ├── both
@@ -75,7 +74,6 @@ Possible actions: index, new, show, edit, create, update, and destroy. If no act
             ├── show.html
             ├── show.js
             └── _show.scss
-
 ```
 
 
@@ -87,3 +85,4 @@ Coming Soon
 
 [1]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog
 [2]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog/client/pages/posts
+[3]: https://github.com/AdamBrodzinski/meteor-generate/blob/master/examples/blog/both/controllers/posts.js
