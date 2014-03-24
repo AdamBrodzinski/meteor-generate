@@ -6,7 +6,8 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 ***[Example blog][1] fire it up to see the general structure it generates.*** **note this has extra logic added in**
 
 ### Init 
-`mgen init <project_name>` Runs Meteor create command and scaffolds out a basic app structure. `mgen init myblog` creates the following files:
+`mgen init <project_name>` Runs Meteor create command and scaffolds out a basic app structure.  
+`mgen init myblog` creates the following files:
 
 ```
 └── myblog  
@@ -33,19 +34,16 @@ parent with child post, etc...  Wiki page coming soon with example useage and fi
 
 
 ### Pages
-`mgen page <name>` Create conceptual 'pages'. Creates template, script, and stylesheet in 'client/pages/'.  
-[Example Template Contents][2]  Wiki page coming soon with example useage and file structure.
+`mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet in 'client/pages/'.  
+If no action flag is passed in, all actions will be created. `mgen page posts --index` creates the following:
 
-*example:* **mgen page posts --show**
 ```
-both
-server
-client
-  pages
-    posts
-      show.html
-      show.js
-      _show.scss
+└── client
+    └── pages
+        └── posts
+            ├── index.html
+            ├── index.js
+            └── _index.scss
 ```
 
 
