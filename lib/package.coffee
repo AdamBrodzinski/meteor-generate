@@ -3,10 +3,11 @@
 # MIT Licensed
 
 fs = require 'fs-extra'
+global.templatePath ||= 'TEST_PATH'
  
-module.exports = class Package
-  dest: './packages/',
-  template: "#{templatePath}/package",
+class Package
+  dest: './packages/'
+  template: "#{templatePath}/package"
 
 
   # Public Creates a package by copying template folder to users
@@ -38,4 +39,7 @@ module.exports = class Package
   # template files
   #
   renamePackage: () ->
+
+
+module.exports = Package
 
