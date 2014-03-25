@@ -77,6 +77,29 @@ See [Example Controller][4]  - `mgen controller posts --show` generates the foll
             └── _show.scss
 ```
 
+```javascript
+// show edit page for single Post : /posts/edit/:id
+Posts.edit = AppController.extend({
+  template: 'editPost',
+
+  before: function() {
+
+  },
+
+  unload: function() {
+
+  }
+});
+
+ 
+// create a Post
+Posts.create = function(data, callback) {
+  console.log('****** No Collection for Posts ******');
+  //db.posts.insert(data, callback);
+  //Meteor.call('Posts.create', data, callback);
+};
+```
+
 
 ### Packages
 
