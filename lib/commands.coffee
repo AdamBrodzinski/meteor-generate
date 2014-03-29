@@ -7,7 +7,7 @@ path = require 'path'
 global.templatePath = path.resolve("#{__dirname}/../templates/default/") + "/"
 
 # save spacec & make printing look a bit nicer
-puts = (msg, param1) ->
+global.puts = (msg, param1) ->
   unless param1
     console.log(msg || '')
   else
@@ -19,6 +19,8 @@ puts = (msg, param1) ->
 prog.version('0.4.1')
 
 Package = require './package'
+Namespace = require './namespace'
+
 
 # Components Command
 # copies a Meteor component boilerplate folder and moves it into component directory.
@@ -86,7 +88,8 @@ prog.command('controller <name>')
 
   .action((resourceName, opts) ->
     puts('\nCreating Routes')
-    require('./namespace').init()
+    namespace = new Namespace
+    namespace.createFile()
     require('./router').create()
     require('./controller').init(resourceName, opts)
     puts('Creating Pages')
