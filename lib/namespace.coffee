@@ -7,6 +7,7 @@
 # can be inserted in them such as `Posts.destroy()`
 
 fs = require "fs-extra"
+parseName = require './parse_name'
 
 class Namespace
   nsFile: "both/lib/namespaces.js",
@@ -28,6 +29,7 @@ class Namespace
   # resName - The {String} name of the resource, eg `posts`
   #
   add: (resName) ->
+    resName = parseName(resName).pascalPlural
     namespace = "#{resName} = {}\n"
     nsFileStr = fs.readFileSync(@nsFile, {encoding: "utf-8"})
     namespaceExists = nsFileStr.match(namespace)
