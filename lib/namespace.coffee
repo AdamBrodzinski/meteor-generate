@@ -16,8 +16,8 @@ class Namespace
   # doesn"t yet exist.
   #
   createFile: ->
-    nameSpaceExists = fs.existsSync("both/lib/namespaces.js")
-    unless nameSpaceExists
+    namespaceExists = fs.existsSync("both/lib/namespaces.js")
+    unless namespaceExists
       fs.copySync("#{templatePath}lib/namespaces.js", "both/lib/namespaces.js")
       puts "    Created: both/lib/namespaces.js"
 

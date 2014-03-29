@@ -32,7 +32,7 @@ class Package
   # packageName - The {String} name of the package
   #
   copyTemplate: (packageName) ->
-    fs.copySync(this.template, this.dest + packageName)
+    fs.copySync(@template, @dest + packageName)
   
 
   # Private: Renames any template variables found inside of the 
