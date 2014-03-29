@@ -123,7 +123,10 @@
       "$": false,               // jQuery
       "Router": false,          // iron-router
       "RouteController": false, // iron-router
-      "AppController": false    // Meteor Generate
+
+      // Meteor Generate
+      "AppController": false,
+      "db": false
     }
 }
 
