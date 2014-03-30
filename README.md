@@ -4,9 +4,9 @@ Automate the common tasks used when building a Meteor app. Create 'pages', compo
 User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
 
 
-### Init 
-`mgen init <project_name>` Runs Meteor create command and scaffolds out a basic app structure.  
-`mgen init myblog` creates the following files:
+### Create 
+`mgen create <project_name>` Runs Meteor create command and scaffolds out a basic app structure.  
+`mgen create myblog` creates the following files:
 
 ```
 └── myblog  
