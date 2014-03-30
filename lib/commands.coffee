@@ -16,7 +16,7 @@ global.puts = (msg, param1) ->
 # global template path
 
 # Main mgen command options
-prog.version('0.4.1')
+prog.version('0.0.6')
 
 Package = require './package'
 Namespace = require './namespace'
