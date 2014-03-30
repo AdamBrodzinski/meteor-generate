@@ -112,9 +112,9 @@ prog.command('controller <name>')
   )
 
 
-# Init Command
-prog.command('init <projectName>')
-  .description('Scaffold out common files like .jshintrc, smart.json, and a makefile')
+# Create Command
+prog.command('create <projectName>')
+  .description('Create a basic running app with a router.')
 
   .action((projectName, options) ->
     puts('\nCreating basic app structure')
@@ -126,7 +126,7 @@ prog.command('init <projectName>')
     puts('Run the `mrt` command to install Iron Router if this is the first time.')
     puts()
     puts('  Example:')
-    puts('  $ mgen init mybook')
+    puts('  $ mgen create mybook')
     puts('  $ cd mybook')
     puts('  $ mrt  #install iron router')
     puts()
