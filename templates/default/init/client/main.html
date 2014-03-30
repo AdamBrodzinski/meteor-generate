@@ -5,14 +5,18 @@
 <!-- Delete this and both/routes.js / route -->
 <template name='homeTemp'>
   <h1>Welcome to Meteor Generate!</h1>
-  <p>
-    To get started run <b>mgen controller posts</b> to create all pages for
-    a Posts resource. <br>By default this will create all actions. Pass in <b>--index</b>
-    to only create an index page, route and controller.
-  </p>
-  <p>
-    See the <a href='https://github.com/AdamBrodzinski/meteor-generate' target='_blank'>
-    GitHub page</a> for more commands.
-  </p>
+
+  <p>To get started run <b>mgen controller posts</b> to create all pages for
+  a Posts resource. <br>By default this will create all actions. Pass in <b>--index</b>
+  to only create an index page, route and controller.</p>
+
+  <p>See the <a href='https://github.com/AdamBrodzinski/meteor-generate' target='_blank'>
+  GitHub page</a> for more commands.</p>
+
+  <p>Notice the inline script in this template won't fire with the slightly
+  modified default browser-policy package.<br>See server/browser_policy.js to
+  edit policy.</p>
+
+  <script>alert('this wont fire with modified "browser-policy" defaults')</script>
 </template>
 
