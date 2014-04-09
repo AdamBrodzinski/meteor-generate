@@ -1,11 +1,11 @@
-Template.compName.helpers({
+Template.__name-singular-camel__.helpers({
   
 });
 
-Template.compName.events({
+Template.__name-singular-camel__.events({
   
 });
 
-Template.compName.rendered = function() {
+Template.__name-singular-camel__.rendered = function() {
   
 };

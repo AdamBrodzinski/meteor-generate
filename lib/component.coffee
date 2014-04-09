@@ -22,6 +22,7 @@ class Component
     @renameAllTemplates()
     @appendStylesheetImport(@compName.snake)
     
+  # private
 
   copyAllTemplates: () ->
     fs.copySync(@templatePath, @destPath)
