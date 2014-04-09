@@ -16,7 +16,7 @@ global.puts = (msg, param1) ->
 # global template path
 
 # Main mgen command options
-prog.version('0.0.6')
+prog.version('0.0.7')
 
 Package = require './package'
 Namespace = require './namespace'
@@ -24,7 +24,7 @@ Namespace = require './namespace'
 
 # Components Command
 # copies a Meteor component boilerplate folder and moves it into component directory.
-prog.command('comp <component_name>')
+prog.command('component <component_name>')
   .description('Create a component template, JS, and Sass files')
 
   .option("-d, --directory <path>", "Change the default component directory 'client/components'", "client/components/")
@@ -35,12 +35,11 @@ prog.command('comp <component_name>')
 
   .on('--help', ->
     puts '  Create a component boilerplate folder including a HTML template, JS, & Sass file.'
-    puts '  Plural item names will produce a parent & child component. e.g. posts with child post'
     puts "  If a component name has multiple words use 'snake_case'"
     puts ''
     puts '  Examples:'
-    puts '  $ mgen comp posts'
-    puts '  $ mgen comp widget_delux'
+    puts '  $ mgen component header'
+    puts '  $ mgen component stock_ticker'
     puts ''
   )
 
