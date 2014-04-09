@@ -28,7 +28,8 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 
 
 ### Components
-`mgen comp <name>` Re-useable widgets that are not tied to a page. These should be able to be included in any page on the app. These are typically things like the header, footer, etc... `mgen comp header` outputs the follwing:  
+`mgen component <name>` Re-useable widgets that are not tied to a page. These should be able to be included in any page on the app. These are typically things like the header, footer, etc... Appends the Sass import into the `styles/_components.scss` file.  
+`mgen comp header` outputs the follwing:  
 
 ```
 └── client
