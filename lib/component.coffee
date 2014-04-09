@@ -8,7 +8,6 @@
 
 fs = require 'fs-extra'
 transformVariables = require './rename'
-changeCase = require 'change-case'
 parseName = require './parse_name'
 
 
