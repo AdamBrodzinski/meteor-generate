@@ -6,6 +6,7 @@ prog = require 'commander'
 path = require 'path'
 global.templatePath = path.resolve("#{__dirname}/../templates/default/") + "/"
 
+
 # save spacec & make printing look a bit nicer
 global.puts = (msg, param1) ->
   unless param1
@@ -13,13 +14,14 @@ global.puts = (msg, param1) ->
   else
     console.log(msg, param1)
 
-# global template path
 
 # Main mgen command options
 prog.version('0.0.7')
 
+
 Package = require './package'
 Namespace = require './namespace'
+Component = require './component'
 
 
 # Components Command
@@ -30,7 +32,7 @@ prog.command('component <component_name>')
   .option("-d, --directory <path>", "Change the default component directory 'client/components'", "client/components/")
 
   .action((compName, options) ->
-    require('./component').run(compName, options)
+    component = new Component(compName, options)
   )
 
   .on('--help', ->
@@ -150,6 +152,7 @@ prog.command('package <packageName>')
     puts '  $ mgen package form-checker'
     puts ''
   )
+
 
 # fire up Commander
 prog.parse(process.argv)
