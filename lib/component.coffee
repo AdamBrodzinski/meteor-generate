@@ -5,88 +5,43 @@
 # Generate a component folder containing an HTML template, JavaScript file
 # and a Sass file. The Sass file import is also appended to /client/sass/comps
 
-fs = require('fs-extra')
-changeCase = require('change-case')
+
+fs = require 'fs-extra'
+transformVariables = require './rename'
+changeCase = require 'change-case'
+parseName = require './parse_name'
 
 
+class Component
+  constructor: (compName, opts) ->
+    @compName = parseName(compName)
+    @compName.original = compName
+    @templatePath = templatePath + 'component/'
+    @destPath = opts.directory + @compName.snake + '/'
 
-handleError = (err) ->
-  if (err)
-    puts('\nError Creating File')
-    puts(err.stack)
-    process.exit(1)
+    @copyTemplate()
+    @renameAllTemplates()
+    
 
-replace = (file, callback) ->
-  fs.readFile(file, 'utf8', (err,data) ->
-    if (err)
-      return puts(err)
-
-    result = callback(data)
-
-    fs.writeFile(file, result, 'utf8',  (err) ->
-      if (err)
-        return puts(err)
-    )
-  )
+  copyTemplate: () ->
+    fs.copySync(@templatePath, @destPath)
+    puts "\nComponent"
+    puts "    Created: #{@compName.snake}.html"
+    puts "    Created: #{@compName.snake}.js"
+    puts "    Created: #{@compName.snake}._scss"
 
 
+  renameAllTemplates: (compName) ->
+    for extension in [".html", ".js", ".scss"]
+      filePath = @destPath + "comp_name" + extension
+      @renameTempateVariables(filePath)
 
-exports.run = (compName, opts) ->
 
-  nameCase = {
-    snake:  compName,
-    camel:  changeCase.camelCase(compName),
-    hyphen: changeCase.paramCase(compName)
-  }
+  renameTempateVariables: (filePath) ->
+    oldFileStr = fs.readFileSync(filePath, {encoding: 'utf-8'})
+    newFileStr = transformVariables(@compName.original, oldFileStr)
+    fs.writeFileSync(filePath, newFileStr)
 
-  compTemplates = templatePath + 'component/'
-  destPath = opts.directory + compName + '/'
 
-  # create a directory in components folder
-  fs.mkdirs(destPath,  (err) ->
-    if (err)
-      console.error('\nError creating directory')
-      console.error(err)
-    else
-      copyTemplates()
-      puts('Created '+nameCase.snake+' directory in ' + destPath)
-  )
-
-  source = compTemplates + 'comp_name'
-  dest =   destPath + nameCase.snake
-
-   # Copy Boilerplate from Cache
-   #
-   #  Boilerplate files are copied from ~/.mgen unless an
-   #  alternative path was provided.
-   #
-  copyTemplates = () ->
-    # Create HTML template file
-    fs.copy(source+'.html', dest+'.html',  (err) ->
-      handleError(err)
-      replace(dest+'.html', (data) ->
-        res = data.replace(/compName/g, nameCase.camel)
-        return res.replace(/comp-name/g, nameCase.hyphen)
-      )
-      puts('  Created HTML Template')
-    )
-
-    # Create JavaScript file
-    fs.copy(source+'.js', dest+'.js',  (err) ->
-      handleError(err)
-      replace(dest+'.js', (data) ->
-        return data.replace(/compName/g, nameCase.camel)
-      )
-      puts('  Created JavaScript File')
-    )
-
-    # Create Sass file
-    fs.copy(source+'.scss', destPath+'_'+nameCase.snake+'.scss',  (err) ->
-      handleError(err)
-      replace(destPath+'_'+nameCase.snake+'.scss', (data) ->
-        return data.replace(/comp-name/g, nameCase.hyphen)
-      )
-      puts('  Created Sass File')
-    )
-
+module.exports = Component
 
