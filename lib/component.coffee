@@ -20,6 +20,7 @@ class Component
 
     @copyAllTemplates()
     @renameAllTemplates()
+    @appendStylesheetImport(@compName.snake)
     
 
   copyAllTemplates: () ->
@@ -30,7 +31,7 @@ class Component
     puts "    Created: _#{@compName.snake}.scss"
 
 
-  renameAllTemplates: (compName) ->
+  renameAllTemplates: () ->
     for extension in [".html", ".js", ".scss"]
       filePath = @destPath + "comp_name" + extension
       @renameTempateVariables(filePath, extension)
@@ -49,6 +50,11 @@ class Component
     newFilePath = @destPath + fileName + ext
     fs.renameSync(oldFilePath, newFilePath)
 
+
+  appendStylesheetImport: (fileName) ->
+    importStr = "@import '../components/#{fileName}/#{fileName}';\n"
+    fs.appendFileSync('client/styles/_components.scss', importStr)
+    
 
 module.exports = Component
 
