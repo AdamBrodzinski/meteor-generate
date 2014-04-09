@@ -19,11 +19,11 @@ class Component
     @templatePath = templatePath + 'component/'
     @destPath = opts.directory + @compName.snake + '/'
 
-    @copyTemplate()
+    @copyAllTemplates()
     @renameAllTemplates()
     
 
-  copyTemplate: () ->
+  copyAllTemplates: () ->
     fs.copySync(@templatePath, @destPath)
     puts "\nComponent"
     puts "    Created: #{@compName.snake}.html"
