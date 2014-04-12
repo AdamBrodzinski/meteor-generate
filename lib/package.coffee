@@ -2,18 +2,18 @@
 # Copyright(c) 2014 Adam Brodzinski <adambrodzinski@gmail.com>
 # MIT Licensed
 
-fs = require 'fs-extra'
-global.templatePath ||= 'TEST_PATH'
+global.fs = require 'fs-extra'
  
 class Package
-  dest: './packages/'
-  template: "#{templatePath}/package"
+  constructor: ->
+    @dest = './packages/'
+    @template = "#{templatePath}/package"
 
 
   # Public Creates a package by copying template folder to users
   # folder, then renames any variables found inside. Appends the
-  # package name to `.meteor/packages` file. 
-  # 
+  # package name to `.meteor/packages` file.
+  #
   # Examples:
   #   require('./package').create('mixpanel')
   #
@@ -35,7 +35,7 @@ class Package
     fs.copySync(@template, @dest + packageName)
   
 
-  # Private: Renames any template variables found inside of the 
+  # Private: Renames any template variables found inside of the
   # template files
   #
   renamePackage: () ->
