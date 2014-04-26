@@ -8,6 +8,7 @@ describe 'Package Module', ->
 
     Package.__set__("fs", {
       copySync: -> "copy success"
+      existsSync: -> false
       appendFileSync: -> "append success"
     })
 
