@@ -32,7 +32,10 @@ class Package
   # packageName - The {String} name of the package
   #
   copyTemplate: (packageName) ->
-    fs.copySync(@template, @dest + packageName)
+    folderAlreadyExists = fs.existsSync(@dest + packageName)
+
+    unless folderAlreadyExists
+      fs.copySync(@template, @dest + packageName)
   
 
   # Private: Renames any template variables found inside of the
