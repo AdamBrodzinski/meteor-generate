@@ -14,11 +14,12 @@ User customizable templates and configuration. Meteor Generate borrows a few con
     │   └── routes.js
     │
     ├── client/
-    │   └── head.html
+    │   └── _startup.js
     │   └── main.html
     │   └── styles/
     │
     ├── server/ 
+    │   └── browser_policy.js/
     │
     ├── .jshintrc
     ├── .jshintignore
@@ -58,7 +59,7 @@ If no action flag is passed in, all actions will be created.
 
 
 ### Controllers
-`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `Posts` namespace. This is used to store controllers, helpers, etc... for that resource. Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.  
+`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `PostsController` namespace. For example, `PostsController.create()` Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.  
 See [Example Controller][4]  - `mgen controller posts --show` generates the following:  
 
 ```
@@ -80,24 +81,27 @@ See [Example Controller][4]  - `mgen controller posts --show` generates the foll
 
 ```javascript
 // show edit page for single Post : /posts/edit/:id
-Posts.edit = AppController.extend({
+PostsController.edit = AppController.extend({
   template: 'editPost',
 
-  before: function() {
-
+  waitOn: function() {
+    return Meteor.subscribe('post', this.params.id);
   },
 
-  unload: function() {
+  data: function() {
+    return Post.findOne(this.params.id);
+  },
 
+  onBeforeAction: function() {
+    console.log('Loading post template');
   }
 });
 
- 
 // create a Post
-Posts.create = function(data, callback) {
-  console.log('****** No Collection for Posts ******');
-  //db.posts.insert(data, callback);
-  //Meteor.call('Posts.create', data, callback);
+PostsController.create = function(data, callback) {
+  console.log('Fired Create Post');
+
+  // call Post model here...
 };
 ```
 
