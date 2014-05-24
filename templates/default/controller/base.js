@@ -1,7 +1,4 @@
-//------------------------------------------------
-//          __name-pascal__ Controller
-//------------------------------------------------
+/*global __name-plural-pascal__Controller:true */
 
-/*global __name-pascal__*/
-
+__name-plural-pascal__Controller = {};
 
