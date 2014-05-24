@@ -23,20 +23,23 @@ class Namespace
 
 
   # Public: Add a namespace to the namespaces file. Allows user to stuff
-  # things related to a namespace in one area. Also used for controllers.
-  # Checks to make sure namespace isn"t already inside file.
+  # things related to a namespace in one area. Checks to make sure
+  # namespace isn"t already inside file.
   #
   # resName - The {String} name of the resource, eg `posts`
   #
   add: (resName) ->
     resName = parseName(resName).pascalPlural
     namespace = "#{resName} = {}\n"
+    contrNamespace = "#{resName}Controller = {}\n"
     nsFileStr = fs.readFileSync(@nsFile, {encoding: "utf-8"})
     namespaceExists = nsFileStr.match(namespace)
 
     unless namespaceExists
       fs.appendFileSync(this.nsFile, namespace)
       puts "    Added: #{resName} namespace"
+      fs.appendFileSync(this.nsFile, contrNamespace)
+      puts "    Added: #{resName}Controller namespace"
 
 
 module.exports = Namespace
