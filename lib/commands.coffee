@@ -2,12 +2,18 @@
 # Copyright(c) 2014 Adam Brodzinski <adambrodzinski@gmail.com>
 # MIT Licensed
 
+# boot CLI
 prog = require 'commander'
+prog.version('0.0.7')
+
+
+# hardcode set template path
+# TODO add a config to use your own templates
 path = require 'path'
 global.templatePath = path.resolve("#{__dirname}/../templates/default/") + "/"
 
 
-# save spacec & make printing look a bit nicer
+# helper to make printing look a bit nicer
 global.puts = (msg, param1) ->
   unless param1
     console.log(msg || '')
@@ -15,17 +21,41 @@ global.puts = (msg, param1) ->
     console.log(msg, param1)
 
 
-# Main mgen command options
-prog.version('0.0.7')
-
-
+# require mgen modules
 Package = require './package'
 Namespace = require './namespace'
 Component = require './component'
 
+                       
+
+# -------------------  CLI Commands  -------------------
+
+
+
+# Create Command
+prog.command('create <projectName>')
+  .description('Create a basic running app with a router.')
+
+  .action((projectName, options) ->
+    puts('\nCreating basic app structure')
+    require('./init').init(projectName, options)
+  )
+
+  .on('--help', ->
+    puts 'Scaffold out common files like .jshintrc, smart.json, and a makefile'
+    puts 'Run the `mrt` command to install Iron Router if this is the first time.'
+    puts ''
+    puts '  Example:'
+    puts '  $ mgen create mybook'
+    puts '  $ cd mybook'
+    puts '  $ mrt  #install iron router'
+    puts ''
+  )
+
 
 # Components Command
 # copies a Meteor component boilerplate folder and moves it into component directory.
+#
 prog.command('component <component_name>')
   .description('Create a component template, JS, and Sass files')
 
@@ -112,27 +142,6 @@ prog.command('controller <name>')
     puts ''
   )
 
-
-# Create Command
-prog.command('create <projectName>')
-  .description('Create a basic running app with a router.')
-
-  .action((projectName, options) ->
-    puts('\nCreating basic app structure')
-    require('./init').init(projectName, options)
-  )
-
-  .on('--help', ->
-    puts('Scaffold out common files like .jshintrc, smart.json, and a makefile')
-    puts('Run the `mrt` command to install Iron Router if this is the first time.')
-    puts()
-    puts('  Example:')
-    puts('  $ mgen create mybook')
-    puts('  $ cd mybook')
-    puts('  $ mrt  #install iron router')
-    puts()
-  )
- 
 
 # Package Command
 prog.command('package <packageName>')
