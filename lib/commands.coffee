@@ -25,6 +25,7 @@ global.puts = (msg, param1) ->
 Package = require './package'
 Namespace = require './namespace'
 Component = require './component'
+Collection = require './collection'
 
                        
 
@@ -52,6 +53,21 @@ prog.command('create <projectName>')
     puts ''
   )
 
+
+# Collections
+prog.command('collection <collectionName>')
+  .description('Add a collection to the clientside and serverside')
+
+  .action((collectionName, options) ->
+    puts("\nInserting #{collectionName} collection")
+    new Collection(collectionName, options)
+  )
+
+  .on('--help', ->
+    puts "Inserts a collection"
+  )
+
+    
 
 # Components Command
 # copies a Meteor component boilerplate folder and moves it into component directory.
