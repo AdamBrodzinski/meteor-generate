@@ -10,16 +10,16 @@ fs = require "fs-extra"
 parseName = require './parse_name'
 
 class Namespace
-  nsFile: "both/lib/namespaces.js",
+  nsFile: "both/lib/_namespaces.js",
 
   # Public: Create a namespaces file. Copies over from templates if it
   # doesn"t yet exist.
   #
   createFile: ->
-    namespaceExists = fs.existsSync("both/lib/namespaces.js")
+    namespaceExists = fs.existsSync("both/lib/_namespaces.js")
     unless namespaceExists
-      fs.copySync("#{templatePath}lib/namespaces.js", "both/lib/namespaces.js")
-      puts "    Created: both/lib/namespaces.js"
+      fs.copySync("#{templatePath}lib/_namespaces.js", "both/lib/_namespaces.js")
+      puts "    Created: both/lib/_namespaces.js"
 
 
   # Public: Add a namespace to the namespaces file. Allows user to stuff
