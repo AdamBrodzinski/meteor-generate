@@ -1,19 +1,19 @@
-// RES Permissions
+// __name-pascal__ Permissions
 // see docs for more info - http://docs.meteor.com/#allow
 
 db.__name-camel__.allow({
   insert: function() {
-    console.log("*** db.listings insert not secure ***");
+    console.log("\n*** db.__name-camel__ insert not secure ***\n");
     return true;
   },
 
   update: function() {
-    console.log("*** db.listings update not secure ***");
+    console.log("\n*** db.__name-camel__ update not secure ***\n");
     return true;
   },
 
   remove: function() {
-    console.log("*** db.listings remove not secure ***");
+    console.log("\n*** db.__name-camel__ remove not secure ***\n");
     return true;
   },
 
