@@ -9,11 +9,30 @@ parseName = require './parse_name'
 
 class Collection
   constructor: (collName, opts) ->
-    @collName = parseName(collName)
-    @collName.original = collName
+    @scriptExt = opts.extension || '.js'
+    @nameCamel = parseName(collName).camel
+    @nameSnake = parseName(collName).snake
     @templatePath = templatePath + 'collection/'
-    console.log "Collection", @collName
-    puts @templatePath
+    @insertCollection()
+
+  # private
+
+  insertCollection: () ->
+    collectionLine = @generateCollectionString()
+    @appendToCollectionFile(collectionLine)
+
+
+  generateCollectionString: ->
+    nameLower = @nameSnake.toLowerCase()
+    return "db.#{@nameSnake} = new Meteor.Collection('#{nameLower}');\n"
+
+
+  appendToCollectionFile: (line) ->
+    filename = "./both/lib/collections#{@scriptExt}"
+    fs.appendFileSync(filename, line)
+    
+
+    
 
 module.exports = Collection
 
