@@ -13,7 +13,8 @@ class Collection
     @nameCamel = parseName(collName).camel
     @nameSnake = parseName(collName).snake
     @templatePath = templatePath + 'collection/'
-    @insertCollection()
+    #@insertCollection()
+    @copyPermissionTemplate()
 
   # private
 
@@ -32,6 +33,17 @@ class Collection
     fs.appendFileSync(filename, line)
     
 
+  copyPermissionTemplate: () ->
+    template = @templatePath + "permission" + @scriptExt
+    dest = "./server/permissions/" + @nameSnake + @scriptExt
+    fs.copySync(template, dest)
+    @renameTempateVariables(template)
+
+  
+  #renameTempateVariables: (template) ->
+    #oldFileStr = fs.readFileSync(template, {encoding: 'utf-8'})
+    #newFileStr = transformVariables(@nameCamel, oldFileStr)
+    #fs.writeFileSync(template, newFileStr)
     
 
 module.exports = Collection
