@@ -121,8 +121,24 @@ PostsController.create = function(data, callback) {
 ```
 
 
-### Collections
+### Collections  
 Coming Soon
+
+
+### Models  
+Coming Soon
+
+
+### Tests  
+Coming Soon. Meteor Generate will create tests for Velocity for you by default.
+
+
+### Custom Templates / Config
+Generators are only helpful if they save you time. 
+
+Soon, you will be able to define your own templates folder so that you can include things like form helpers, test helpers... anything you want. A project level mgen config file will help team members sync settings and reduce command line flags.
+
+
 
 
 ***[Example blog][1] fire it up to see the general structure it generates.*** **note this has extra logic added in**
