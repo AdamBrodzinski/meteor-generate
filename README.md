@@ -3,6 +3,8 @@
 Automate the common tasks used when building a Meteor app. Create 'pages', components,  controllers, collections & more.
 User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
 
+### *Note*, i'm currently waiting for a few things to iron out (packages, iron router, etc..) before I do more work on this. More updates coming soon
+
 
 ### Create 
 `mgen create <project_name>` Runs Meteor create command and scaffolds out a basic app structure.  
