@@ -99,11 +99,17 @@ PostsController.edit = AppController.extend({
   }
 });
 
-// create a Post
+// controller to do something when complete
 PostsController.create = function(data, callback) {
   console.log('Fired Create Post');
 
   // call Post model here...
+  Post.create(data, function(err, id){
+    if (callback) callback(err, id);
+    if (err) return alert(err.reason);
+    
+    Router.go('/somewhere');
+  });
 };
 ```
 
