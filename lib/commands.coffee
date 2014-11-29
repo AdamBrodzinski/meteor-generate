@@ -55,15 +55,22 @@ prog.command('create <projectName>')
 
 # Collections
 prog.command('collection <collectionName>')
-  .description('Add a collection to the clientside and serverside')
+  .description('Add a Meteor Collection"')
 
   .action((collectionName, options) ->
-    puts("\nInserting #{collectionName} collection")
     new Collection(collectionName, options)
   )
 
   .on('--help', ->
-    puts "Inserts a collection"
+    puts '  Inserts a collection into the both/lib/collections file.'
+    puts '  Multi words should be camel cased like `postThings`'
+    puts ''
+    puts '  Examples:'
+    puts '  $ mgen collection posts'
+    puts ''
+    puts '  Creates:'
+    puts '  db.posts = new Meteor.Collection("posts");'
+    puts ''
   )
 
 

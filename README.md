@@ -134,7 +134,11 @@ PostsController.create = function(data, callback) {
 
 
 ### Collections
-Coming Soon
+
+Creates a Meteor collection in the `both/lib/collections.js` file. Collections
+are inserted into the `db` namespace, acces them with `db.posts.find(...)` Passing in `mgen collection posts` generates the following:
+
+`db.posts = new Meteor.Collection('posts');`
 
 
 ### Models
