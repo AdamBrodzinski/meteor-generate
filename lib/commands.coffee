@@ -4,7 +4,7 @@
 
 # boot CLI
 prog = require 'commander'
-prog.version('0.0.7')
+prog.version('0.0.8')
 
 
 # hardcode set template path
@@ -27,7 +27,7 @@ Namespace = require './namespace'
 Component = require './component'
 Collection = require './collection'
 
-                       
+
 
 # -------------------  CLI Commands  -------------------
 
@@ -44,12 +44,11 @@ prog.command('create <projectName>')
 
   .on('--help', ->
     puts 'Scaffold out common files like .jshintrc, smart.json, and a makefile'
-    puts 'Run the `mrt` command to install Iron Router if this is the first time.'
     puts ''
     puts '  Example:'
     puts '  $ mgen create mybook'
     puts '  $ cd mybook'
-    puts '  $ mrt  #install iron router'
+    puts '  $ meteor'
     puts ''
   )
 
@@ -67,7 +66,7 @@ prog.command('collection <collectionName>')
     puts "Inserts a collection"
   )
 
-    
+
 
 # Components Command
 # copies a Meteor component boilerplate folder and moves it into component directory.
