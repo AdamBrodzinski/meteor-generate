@@ -6,12 +6,12 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 ### *Note*, i'm currently waiting for a few things to iron out (packages, iron router, etc..) before I do more work on this. More updates coming soon
 
 
-### Create 
-`mgen create <project_name>` Runs Meteor create command and scaffolds out a basic app structure.  
+### Create
+`mgen create <project_name>` Runs Meteor create command and scaffolds out a basic app structure.
 `mgen create myblog` creates the following files:
 
 ```
-└── myblog  
+└── myblog
     ├── both/
     │   └── routes.js
     │
@@ -20,7 +20,7 @@ User customizable templates and configuration. Meteor Generate borrows a few con
     │   └── main.html
     │   └── styles/
     │
-    ├── server/ 
+    ├── server/
     │   └── browser_policy.js/
     │
     ├── .jshintrc
@@ -31,8 +31,8 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 
 
 ### Components
-`mgen component <name>` Re-useable widgets that are not tied to a page. These should be able to be included in any page on the app. These are typically things like the header, footer, etc... Appends the Sass import into the `styles/_components.scss` file.  
-`mgen comp header` outputs the follwing:  
+`mgen component <name>` Re-useable widgets that are not tied to a page. These should be able to be included in any page on the app. These are typically things like the header, footer, etc... Appends the Sass import into the `styles/_components.scss` file.
+`mgen comp header` outputs the follwing:
 
 ```
 └── client
@@ -46,8 +46,8 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 
 
 ### Pages
-`mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet. No controllers are generated.  
-If no action flag is passed in, all actions will be created.  
+`mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet. No controllers are generated.
+If no action flag is passed in, all actions will be created.
 [See Example Pages][3] - `mgen page posts --index` creates the following:
 
 ```
@@ -61,8 +61,8 @@ If no action flag is passed in, all actions will be created.
 
 
 ### Controllers
-`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `PostsController` namespace. For example, `PostsController.create()` Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.  
-See [Example Controller][4]  - `mgen controller posts --show` generates the following:  
+`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `PostsController` namespace. For example, `PostsController.create()` Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.
+See [Example Controller][4]  - `mgen controller posts --show` generates the following:
 
 ```
 ├── both
@@ -107,7 +107,7 @@ PostsController.create = function(data, callback) {
   Post.create(data, function(err, id){
     if (callback) callback(err, id);
     if (err) return alert(err.reason);
-    
+
     Router.go('/somewhere');
   });
 };
@@ -116,7 +116,7 @@ PostsController.create = function(data, callback) {
 
 ### Packages
 
-`mgen package <name>` Creates a Meteor smart package. Includes smart.json for Atmosphere (options flag coming soon). `mgen package mixpanel` Generates the following: 
+`mgen package <name>` Creates a Meteor smart package. Includes smart.json for Atmosphere (options flag coming soon). `mgen package mixpanel` Generates the following:
 
 ```
 └── packages
@@ -129,20 +129,20 @@ PostsController.create = function(data, callback) {
 ```
 
 
-### Collections  
+### Collections
 Coming Soon
 
 
-### Models  
+### Models
 Coming Soon
 
 
-### Tests  
+### Tests
 Coming Soon. Meteor Generate will create tests for Velocity for you by default.
 
 
 ### Custom Templates / Config
-Generators are only helpful if they save you time. 
+Generators are only helpful if they save you time.
 
 Soon, you will be able to define your own templates folder so that you can include things like form helpers, test helpers... anything you want. A project level mgen config file will help team members sync settings and reduce command line flags.
 
