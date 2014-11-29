@@ -1,6 +1,6 @@
 {
   "name": "meteor-generate",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Generate Meteor scaffolding on demand",
   "keywords": [ "meteor", "scaffold"],
   "author": "Adam Brodzinski",
@@ -23,7 +23,7 @@
     "chai": "*",
     "coffee-script": "*"
   },
-  "scripts" : { 
+  "scripts" : {
     "test" : "make test"
   }
 }
