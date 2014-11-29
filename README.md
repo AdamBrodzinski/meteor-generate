@@ -50,7 +50,7 @@ User customizable templates and configuration. Meteor Generate borrows a few con
 
 ### Pages
 `mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet. No controllers are generated.
-If no action flag is passed in, all actions will be created.
+If no action flag is passed in, all actions will be created. Possible actions: index, show, new, and edit.
 [See Example Pages][3] - `mgen page posts --index` creates the following:
 
 ```
@@ -70,7 +70,7 @@ See [Example Controller][4]  - `mgen controller posts --show` generates the foll
 ```
 ├── both
 │   ├── controllers
-│   │   ├── app.js
+│   │   ├── _app.js
 │   │   └── posts.js
 │   ├── lib
 │   │   └── namespaces.js   // adds a `db` namespace and `Posts` namespace
@@ -86,19 +86,20 @@ See [Example Controller][4]  - `mgen controller posts --show` generates the foll
 
 ```javascript
 // show edit page for single Post : /posts/edit/:id
-PostsController.edit = AppController.extend({
-  template: 'editPost',
+PostsController.Edit = AppController.extend({
+  template: 'postsEdit',
 
   waitOn: function() {
-    return Meteor.subscribe('post', this.params.id);
+    //return Meteor.subscribe('post', this.params.id);
   },
 
   data: function() {
-    return Post.findOne(this.params.id);
+    //return Post.findOne(this.params.id);
   },
 
   onBeforeAction: function() {
-    console.log('Loading post template');
+    console.log("  [PostsController.Edit]: loading", this.url);
+    this.next();
   }
 });
 
