@@ -28,7 +28,7 @@ class Publish
   parseParams:(params) ->
     # splits `posts:userPosts` into ['posts:userPosts','posts','userPosts']
     matches = params.match(/^([^:]+):([^:]+)$/)
-    if !matches[1] || !matches[2]
+    if !matches || !matches[1] || !matches[2]
       throw new Error("Bad Publish Name Syntax, see mgen publish --help")
     else
       return {filenameRoot: matches[1], pubName: matches[2]}
