@@ -24,14 +24,9 @@ class Publish
 
   # private
 
-  # parse params to find the filename and publication name
-  # splits `posts:userPosts` into ['posts:userPosts','posts','userPosts']
-  #
-  # params - single {String} formatted with colon seperation
-  # returns {Object}
-  #     : filenameRoot - {String} filename minus extension
-  #     : pubName - {String} name of meteor publication
+  # find the filename and publication name
   parseParams:(params) ->
+    # splits `posts:userPosts` into ['posts:userPosts','posts','userPosts']
     matches = params.match(/^([^:]+):([^:]+)$/)
     if !matches[1] || !matches[2]
       throw new Error("Bad Publish Name Syntax, see mgen publish --help")
