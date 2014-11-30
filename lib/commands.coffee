@@ -26,6 +26,7 @@ Package = require './package'
 Namespace = require './namespace'
 Component = require './component'
 Collection = require './collection'
+Publish = require './publish'
 
 
 
@@ -184,6 +185,25 @@ prog.command('package <packageName>')
     puts ''
   )
 
+# Package Command
+prog.command('publish <pubName>')
+  .description('Insert a Publish Method')
+
+  .action((pubName, options) ->
+    puts("\nCreating Publish Method " + pubName)
+    new Publish(pubName, options)
+  )
+
+  .on('--help', ->
+    puts '  Insert a publish method into /server/publications/ '
+    puts '  To insert a "userPost" publication into the '
+    puts '  /server/publications/posts.js file we would specify'
+    puts '  the file name and publication name such as:'
+    puts ''
+    puts '  Example:'
+    puts '  $ mgen publish posts:userPost'
+    puts ''
+  )
 
 # fire up Commander
 prog.parse(process.argv)
