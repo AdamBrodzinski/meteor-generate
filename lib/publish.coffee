@@ -12,8 +12,8 @@ class Publish
     @opts = opts
     @ext = '.js'
     params = @parseParams(pubParams)
-    @filename = params[1] + @ext  # ex posts.js
-    @pubName = params[2] # ex userPosts
+    @filename = params.filenameRoot + @ext
+    @pubName = params.pubName
     @pubsPath = "server/publications/"
     @fullFilePath = @pubsPath + @filename
 
@@ -28,13 +28,15 @@ class Publish
   # splits `posts:userPosts` into ['posts:userPosts','posts','userPosts']
   #
   # params - single {String} formatted with colon seperation
-  # returns {Array} of {Strings}
+  # returns {Object}
+  #     : filenameRoot - {String} filename minus extension
+  #     : pubName - {String} name of meteor publication
   parseParams:(params) ->
     matches = params.match(/^([^:]+):([^:]+)$/)
     if !matches[1] || !matches[2]
       throw new Error("Bad Publish Name Syntax, see mgen publish --help")
     else
-      return matches
+      return {filenameRoot: matches[1], pubName: matches[2]}
 
 
 module.exports = Publish
