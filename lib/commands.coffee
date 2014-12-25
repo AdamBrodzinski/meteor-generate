@@ -190,7 +190,6 @@ prog.command('publish <pubName>')
   .description('Insert a Publish Method')
 
   .action((pubName, options) ->
-    puts("\nCreating Publish Method " + pubName)
     new Publish(pubName, options)
   )
 

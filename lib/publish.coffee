@@ -29,10 +29,16 @@ class Publish
     # splits `posts:userPosts` into ['posts:userPosts','posts','userPosts']
     matches = params.match(/^([^:]+):([^:]+)$/)
     if !matches || !matches[1] || !matches[2]
-      throw new Error("Bad Publish Name Syntax, see mgen publish --help")
+      @printBadSynaxHelp()
+      process.exit(1)
     else
       return {filenameRoot: matches[1], pubName: matches[2]}
 
+  printBadSynaxHelp: ->
+    puts "\nBad Publish Name Syntax, see mgen publish --help"
+    puts '\n Example:'
+    puts '   $ mgen publish collectionName:publishName'
+    puts '   $ mgen publish posts:userPost\n'
 
 module.exports = Publish
 
