@@ -12,15 +12,15 @@ class Publish
     @opts = opts
     @ext = '.js'
     params = @parseParams(pubParams)
-    @filename = params.filenameRoot + @ext
+    @filename = params.resourceName + @ext
     @pubName = params.pubName
+    @resName = params.resourceName
     @pubsPath = "server/publications/"
     @fullFilePath = @pubsPath + @filename
     @templatePath = "#{templatePath}publish/publish" + @ext
 
     @createPublicationFile()
     @appendTemplateIntoPubFile()
-    #@renameTemplateVariables()
     puts "Inserted '#{@pubName}' into #{@fullFilePath}"
 
   # private
@@ -30,10 +30,13 @@ class Publish
 
   appendTemplateIntoPubFile: ->
     template = fs.readFileSync(@templatePath, {encoding: "utf-8"})
+    template = @renameTemplateVariables(template)
     fs.appendFileSync(@fullFilePath, template)
 
-  renameTemplateVariables: ->
-
+  # returns transformed {String}
+  renameTemplateVariables: (tmpl) ->
+    tmplString = transformVariables(@resName, tmpl)
+    tmplString = tmplString.replace('__pub-name__', @pubName)
 
   # find the filename and publication name
   parseParams:(params) ->
@@ -43,7 +46,7 @@ class Publish
       @printBadSynaxHelp()
       process.exit(1)
     else
-      return {filenameRoot: matches[1], pubName: matches[2]}
+      return {resourceName: matches[1], pubName: matches[2]}
 
   printBadSynaxHelp: ->
     puts "\nBad Publish Name Syntax, see mgen publish --help"
