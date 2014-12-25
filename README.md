@@ -120,7 +120,8 @@ PostsController.create = function(data, callback) {
 
 ### Packages
 
-`mgen package <name>` Creates a Meteor smart package. Includes smart.json for Atmosphere (options flag coming soon). `mgen package mixpanel` Generates the following:
+`mgen package <name>` Creates a Meteor smart package. Flags for client/server/both coming soon.  
+`mgen package mixpanel` Generates the following:
 
 ```
 └── packages
