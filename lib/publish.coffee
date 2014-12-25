@@ -16,13 +16,24 @@ class Publish
     @pubName = params.pubName
     @pubsPath = "server/publications/"
     @fullFilePath = @pubsPath + @filename
+    @templatePath = "#{templatePath}publish/publish" + @ext
 
-    #@createPublicationFile()
-    #@appendTemplateIntoPubFile()
+    @createPublicationFile()
+    @appendTemplateIntoPubFile()
     #@renameTemplateVariables()
     puts "Inserted '#{@pubName}' into #{@fullFilePath}"
 
   # private
+
+  createPublicationFile: ->
+    fs.ensureFileSync(@fullFilePath)
+
+  appendTemplateIntoPubFile: ->
+    template = fs.readFileSync(@templatePath, {encoding: "utf-8"})
+    fs.appendFileSync(@fullFilePath, template)
+
+  renameTemplateVariables: ->
+
 
   # find the filename and publication name
   parseParams:(params) ->
