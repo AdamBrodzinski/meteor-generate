@@ -1,6 +1,6 @@
 {
   "name": "meteor-generate",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Generate Meteor scaffolding on demand",
   "keywords": [ "meteor", "scaffold"],
   "author": "Adam Brodzinski",
