@@ -137,7 +137,7 @@ PostsController.create = function(data, callback) {
 ### Collections
 
 Creates a Meteor collection in the `both/lib/collections.js` file. Collections
-are inserted into the `db` namespace, acces them with `db.posts.find(...)` Passing in `mgen collection posts` generates the following:
+are inserted into the `db` namespace, access them with `db.posts.find(...)` Passing in `mgen collection posts` generates the following:
 
 `db.posts = new Meteor.Collection('posts');`
 
@@ -145,6 +145,18 @@ are inserted into the `db` namespace, acces them with `db.posts.find(...)` Passi
 ### Models
 Coming Soon
 
+
+### Publications
+
+Creates a publication on the server. Publications are stored in the `server/publications` directory inside of a script file file with the same name as the resource. Passing in `mgen publication post:userPost` will generate a 'userPost' publication for the resource 'post'.
+
+```
+Meteor.publish('userPost', function() {
+  // TODO index query
+  // XXX bad performance no limit
+  return db.posts.find({});
+});
+```
 
 ### Tests
 Coming Soon. Meteor Generate will create tests for Velocity for you by default.
