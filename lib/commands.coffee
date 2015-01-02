@@ -27,6 +27,7 @@ Namespace = require './namespace'
 Component = require './component'
 Collection = require './collection'
 Publish = require './publish'
+Model = require './model'
 
 
 
@@ -203,6 +204,22 @@ prog.command('publish <pubName>')
     puts '  $ mgen publish posts:userPost'
     puts ''
   )
+
+# Package Command
+prog.command('model <modelName>')
+  .description('Create a Model')
+
+  .action((modelName, options) ->
+    new Model(modelName, options)
+  )
+
+  .on('--help', ->
+    puts '\n Create a model that is shared on the client and server'
+    puts '  Example:'
+    puts '  $ mgen model post\n'
+  )
+
+
 
 # fire up Commander
 prog.parse(process.argv)
