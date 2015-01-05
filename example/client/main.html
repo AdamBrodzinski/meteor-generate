@@ -1,0 +1,28 @@
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<template name='mainLayout'>
+  {{> yield}}
+</template>
+
+<!-- Delete this template and it’s route at both/routes.js -->
+<template name='homeTemp'>
+  <h1>Welcome to Meteor Generate!</h1>
+
+  <p>To get started run <b>mgen controller posts</b> to create all pages for
+  a Posts resource. <br>By default this will create all actions. Pass in <b>--index</b>
+  to only create an index page, route and controller.</p>
+
+  <p>To generate files for single page (HTML, JS, Sass) run <b>mgen page foo</b></p>
+
+  <p>See the <a href='https://github.com/AdamBrodzinski/meteor-generate' target='_blank'>
+  Meteor Generate GitHub Page</a> for more commands.</p>
+
+  <p>
+    Find me in <b>client/main.html</b><br>
+    My route is in <b>both/routes.js</b>
+  </p>
+</template>
+

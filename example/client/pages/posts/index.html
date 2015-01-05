@@ -1,0 +1,13 @@
+<template name='posts'>
+
+<div class='posts'>
+  <h1>Page: posts</h1>
+  <p>Find me in client/pages/posts/index.html</p>
+</div>
+
+<!-- this was added without the generator for this example -->
+{{#each this}}
+  <a href="/posts/{{_id}}">Title: {{title}}</a> <br>
+{{/each}}
+
+</template>
