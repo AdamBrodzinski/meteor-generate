@@ -148,7 +148,7 @@ Coming Soon
 
 ### Publications
 
-Creates a publication on the server. Publications are stored in the `server/publications` directory inside of a script file file with the same name as the resource. Passing in `mgen publication post:userPost` will generate a 'userPost' publication for the resource 'post'.
+Creates a publication on the server. Publications are stored in the `server/publications` directory inside of a script file file with the same name as the resource. Passing in `mgen publish post:userPost` will generate a 'userPost' publication for the resource 'post'.
 
 ```
 Meteor.publish('userPost', function() {
