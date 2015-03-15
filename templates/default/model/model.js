@@ -63,7 +63,7 @@ Meteor.methods({
     //if (!this.userId) throw new Meteor.Error(401, "You must be logged in");
 
     // if caller doesn't own document this will fail because the query field will not match
-    var count = db.posts.remove({_id: docId, ownerId: this.userId});
+    var count = db.__name-plural-camel__.remove({_id: docId, ownerId: this.userId});
     console.log("  [__name-singular-pascal__.destroy]", count);
     return count;
   }
