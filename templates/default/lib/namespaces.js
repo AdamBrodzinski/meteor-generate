@@ -1,6 +1,4 @@
-/*global db:true */
-
-// Collections namespace
-db = {};
+// Mongo collections namespace
+this.db = {};
 
 // Resource namespaces

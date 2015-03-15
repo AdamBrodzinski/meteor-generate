@@ -30,14 +30,11 @@ class Namespace
   #
   add: (resName) ->
     resName = parseName(resName).pascalPlural
-    namespace = "#{resName} = {}\n"
-    contrNamespace = "#{resName}Controller = {}\n"
+    contrNamespace = "this.#{resName}Controller = {};\n"
     nsFileStr = fs.readFileSync(@nsFile, {encoding: "utf-8"})
-    namespaceExists = nsFileStr.match(namespace)
+    namespaceExists = nsFileStr.match(contrNamespace)
 
     unless namespaceExists
-      fs.appendFileSync(this.nsFile, namespace)
-      puts "    Added: #{resName} namespace"
       fs.appendFileSync(this.nsFile, contrNamespace)
       puts "    Added: #{resName}Controller namespace"
 
