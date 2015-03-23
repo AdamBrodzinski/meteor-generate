@@ -2,8 +2,8 @@
 __name-plural-pascal__Controller.Index = AppController.extend({
   template: '__name-plural-camel__',
 
-  waitOn: function() {
-    //return Meteor.subscribe('__name-plural-camel__');
+  subscriptions: function() {
+    //this.subscribe('__name-plural-camel__');
   },
 
   data: function() {

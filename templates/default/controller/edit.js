@@ -2,8 +2,8 @@
 __name-plural-pascal__Controller.Edit = AppController.extend({
   template: '__name-plural-camel__Edit',
 
-  waitOn: function() {
-    //return Meteor.subscribe('__name-singular-camel__', this.params.id);
+  subscriptions: function() {
+    //this.subscribe('__name-singular-camel__', this.params.id);
   },
 
   data: function() {
