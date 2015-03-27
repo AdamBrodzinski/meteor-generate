@@ -4,7 +4,7 @@
 
 # boot CLI
 prog = require 'commander'
-prog.version('0.11.0')
+prog.version('0.12.2')
 
 
 # hardcode set template path
