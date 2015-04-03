@@ -11,10 +11,12 @@ Customize the output with your own folder/file overrides so you can setup your o
 --video--
 
 
+<br>
 ### Installation
 `sudo install meteor-generate --global`  
 
-
+ 
+<br>
 ### Create a basic blog
 
 To create an app with posts CRUD run the following:
@@ -28,6 +30,7 @@ To create an app with posts CRUD run the following:
 `mgen publish post:post`  
 
 
+<br>
 ### Commands
 
 **`mgen create <projectName>`**  
