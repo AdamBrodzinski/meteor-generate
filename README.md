@@ -12,12 +12,12 @@ Customize the output with your own folder/file overrides so you can setup your o
 
 
 <br>
-### Installation
+## Installation
 `sudo install meteor-generate --global`  
 
  
 <br>
-### Create a basic blog
+## Create a basic blog
 
 To create an app with posts CRUD run the following:
 
@@ -31,7 +31,7 @@ To create an app with posts CRUD run the following:
 
 
 <br>
-### Commands
+## Commands
 
 **`mgen create <projectName>`**  
 Create a basic project structure with the minimum required to get a production app started. Includes the Iron Router, Browser Policy, Accounts-ui and Accounts Password packages (for model user validations).  
