@@ -1,181 +1,66 @@
-## Generate Scaffolding for Meteor
+# Generate Scaffolding for Meteor
 
-Automate the common tasks used when building a Meteor app. Create 'pages', components,  controllers, collections & more.
-User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
+Are you tired of writing the same boilerplate over and over?  Automate the common tasks used when building a Meteor app. Create pages, components, models, controllers, collections & more. 
+
+Get rid of your Meteor spaghetti. Uses Controllers, Models, and Service Objects to handle logic responsibilities. Pages and components handle views and view logic (using their own js files).
+
+Based on architecture used in large production apps. Generates secure settings by default. Will soon generate passing specs unless the `--notests` flag is passed.
+
+Customize the output with your own folder/file overrides so you can setup your own defaults.
+
+--video--
+
 
 ### Installation
 `sudo install meteor-generate --global`  
 
-### Create
-`mgen create <project_name>` Runs Meteor create command and scaffolds out a basic app structure.
-`mgen create myblog` creates the following files:
 
-```
-└── myblog
-    ├── both
-    │   ├── lib
-    │   │   ├── _namespaces.js
-    │   │   └── collections.js
-    │   └── routes.js
-    │
-    ├── client/
-    │   └── _startup.js
-    │   └── main.html
-    │   └── styles/
-    │       ├── _components.scss
-    │       ├── _pages.scss
-    │       └── main.scss
-    │
-    ├── server/
-    │
-    ├── .jshintrc
-    ├── .jshintignore
-    ├── makefile
-    └── smart.json
-```
+### Create a basic blog
+
+To create an app with posts CRUD run the following:
+
+`mgen create blog`  
+`cd blog`  
+`mgen collection posts`  
+`mgen model post`  
+`mgen controller posts`  
+`mgen publish posts:post`  
+`mgen publish post:post`  
 
 
-### Components
-`mgen component <name>` Re-useable widgets that are not tied to a page. These should be able to be included in any page on the app. These are typically things like the header, footer, etc... Appends the Sass import into the `styles/_components.scss` file.
-`mgen comp header` outputs the follwing:
+### Commands
 
-```
-└── client
-    └── components
-        └── header
-            ├── _header.scss
-            ├── header.html
-            └── header.js
-```
+`mgen create <projectName>`  
+Create a basic project structure with the minimum required to get a production app started. Includes the Iron Router, Browser Policy, Accounts-ui and Accounts Password packages (for model user validations).  
+[See examples & details](http://foo)
 
+`mgen collection <collectionName>`  
+Creates a new collection and places it under the global `db` namespace. This allows for a natural `db.posts.find();` syntax. The new collection is placed in the both/lib/collections.js file.  
+[See examples & details](http://foo)
 
+`mgen model <modelName>`  
+Creates a model facade around the collection insert/update/remove methods. While this isn't a model ORM like * , it allows you to abstract the db.foo calls and gives you a place to call methods for the data layer. We like the extra control Meteor methods give us so allow/deny is not used and security is handled in the method. This also allows model sharing via DDP.  
+[See examples & details](http://foo)
 
-### Pages
-`mgen page <name> <action>` Create conceptual 'pages'. Creates template, script, and stylesheet. No controllers are generated.
-If no action flag is passed in, all actions will be created. Possible actions: index, show, new, and edit.
-[See Example Pages][3] - `mgen page posts --index` creates the following:
+`mgen controller <controllerName>`  
+ Creates controllers for Iron-Router, adds routes, and creates pages for view controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created for these data only controllers.  
+[See examples & details](http://foo)
 
-```
-└── client
-    └── pages
-        └── posts
-            ├── index.html
-            ├── index.js
-            └── _index.scss
-```
+`mgen component <name>`  
+Re-useable widgets that are not tied to a page. These are typically things like the header, footer, weather widget, etc... Appends the Sass import into styles/_components.scss .  
+[See examples & details](http://foo)
 
+`mgen page <name> <action>`  
+Create conceptual 'pages'. Creates it's own template, script, and stylesheet. No controllers are generated. If no action flag is passed in, all actions will be created. Possible actions: index, show, new, and edit.  
+[See examples & details](http://foo)
 
-### Controllers
-`mgen controller <name> <actions>` Creates controllers for Iron-Router, adds routes, creates pages for controllers. If only `create`, `update`, or `destroy` actions are passed, no pages are created. These are data only controllers. A namespace file is created if it doesn't exist which adds a `db` namespace for collections. This allows for a natural `db.posts.find(...)` synatax. Creating a posts controller adds a `PostsController` namespace. For example, `PostsController.create()` Possible actions: index, new, show, edit, create, update, and destroy. If no actions are passed, all will be created.
-See [Example Controller][4]  - `mgen controller posts --show` generates the following:
-
-```
-├── both
-│   ├── controllers
-│   │   ├── _app.js
-│   │   └── posts.js
-│   ├── lib
-│   │   └── namespaces.js   // adds a `db` namespace and `Posts` namespace
-│   └── routes.js
-│
-└── client
-    └── pages
-        └── posts
-            ├── show.html
-            ├── show.js
-            └── _show.scss
-```
-
-```javascript
-// show edit page for single Post : /posts/edit/:id
-PostsController.Edit = AppController.extend({
-  template: 'postsEdit',
-
-  waitOn: function() {
-    //return Meteor.subscribe('post', this.params.id);
-  },
-
-  data: function() {
-    //return Post.findOne(this.params.id);
-  },
-
-  onBeforeAction: function() {
-    console.log("  [PostsController.Edit]: loading", this.url);
-    this.next();
-  }
-});
-
-// controller to do something when complete
-PostsController.create = function(data, callback) {
-  console.log('Fired Create Post');
-
-  // call Post model here...
-  Post.create(data, function(err, id){
-    if (callback) callback(err, id);
-    if (err) return alert(err.reason);
-
-    Router.go('/somewhere');
-  });
-};
-```
-
-
-### Packages
-
-`mgen package <name>` Creates a Meteor smart package. Flags for client/server/both coming soon.  
-`mgen package mixpanel` Generates the following:
-
-```
-└── packages
-    └── mixpanel
-        ├── both.js
-        ├── client.js
-        ├── package.js
-        ├── server.js
-        └── smart.json
-```
-
-
-### Collections
-
-Creates a Meteor collection in the `both/lib/collections.js` file. Collections
-are inserted into the `db` namespace, access them with `db.posts.find(...)` Passing in `mgen collection posts` generates the following:
-
-`db.posts = new Meteor.Collection('posts');`
-
-
-### Models
-Coming Soon
-
-
-### Publications
-
-Creates a publication on the server. Publications are stored in the `server/publications` directory inside of a script file file with the same name as the resource. Passing in  
-`mgen publish post:userPost` will generate a 'userPost' publication for the resource 'post'.
-
-```
-Meteor.publish('userPost', function() {
-  // TODO index query
-  // XXX bad performance no limit
-  return db.posts.find({});
-});
-```
+`mgen package <packageName>`  
+ Creates a Meteor smart package. Flags for client/server/both coming soon. Currently generates client/server/both files at once.
 
 ### Tests
-Coming Soon. Meteor Generate will create tests for Velocity for you by default.
 
+Tests will soon be generated for models, controllers, and view templates with basic passing specs. Pass `--notests` at creation time to skip test output.
 
 ### Custom Templates / Config
-Generators are only helpful if they save you time.
+Generators are only helpful if they save you time. Soon, you will be able to define your own templates folder so that you can include things like form helpers, test helpers... anything you want. A project level mgen config file will help team members sync settings and reduce command line flags.
 
-Soon, you will be able to define your own templates folder so that you can include things like form helpers, test helpers... anything you want. A project level mgen config file will help team members sync settings and reduce command line flags.
-
-
-
-
-***[Example blog][1] fire it up to see the general structure it generates.*** **note this has extra logic added in**
-
-[1]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog
-[2]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog/client/pages/posts
-[3]: https://github.com/AdamBrodzinski/meteor-generate/tree/master/examples/blog/client/pages
-[4]: https://github.com/AdamBrodzinski/meteor-generate/blob/master/examples/blog/both/controllers/posts.js
