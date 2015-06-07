@@ -16,24 +16,23 @@ class Component
     @compName = parseName(compName)
     @compName.original = compName
     @templatePath = templatePath + 'component/'
-    @destPath = opts.directory + @compName.snake + '/'
+    @destPath = opts.directory + @compName.pascal + '/'
 
     @copyAllTemplates()
     @renameAllTemplates()
-    @appendStylesheetImport(@compName.snake)
-    
+    @appendStylesheetImport(@compName.pascal)
+
   # private
 
   copyAllTemplates: () ->
     fs.copySync(@templatePath, @destPath)
     puts "\nComponent"
-    puts "    Created: #{@compName.snake}.html"
-    puts "    Created: #{@compName.snake}.js"
-    puts "    Created: _#{@compName.snake}.scss"
+    puts "    Created: #{@compName.pascal}.jsx"
+    puts "    Created: _#{@compName.pascal}.scss"
 
 
   renameAllTemplates: () ->
-    for extension in [".html", ".js", ".scss"]
+    for extension in [".jsx", ".scss"]
       filePath = @destPath + "comp_name" + extension
       @renameTempateVariables(filePath, extension)
 
@@ -42,12 +41,13 @@ class Component
     oldFileStr = fs.readFileSync(filePath, {encoding: 'utf-8'})
     newFileStr = transformVariables(@compName.original, oldFileStr)
     fs.writeFileSync(filePath, newFileStr)
+    fs.chmodSync(filePath, 0o0644)
     @renameFile(filePath, extension)
 
 
   renameFile: (oldFilePath, ext) ->
     needsUnder = (ext == '.scss')
-    fileName = if needsUnder then "_#{@compName.snake}" else @compName.snake
+    fileName = if needsUnder then "_#{@compName.pascal}" else @compName.pascal
     newFilePath = @destPath + fileName + ext
     fs.renameSync(oldFilePath, newFilePath)
 
@@ -55,7 +55,7 @@ class Component
   appendStylesheetImport: (fileName) ->
     importStr = "@import '../components/#{fileName}/#{fileName}';\n"
     fs.appendFileSync('client/styles/_components.scss', importStr)
-    
+
 
 module.exports = Component
 

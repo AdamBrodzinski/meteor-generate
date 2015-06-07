@@ -10,7 +10,7 @@ prog.version('0.12.2')
 # hardcode set template path
 # TODO add a config to use your own templates
 path = require 'path'
-global.templatePath = path.resolve("#{__dirname}/../templates/default/") + "/"
+global.templatePath = path.resolve("#{__dirname}/../templates/react/") + "/"
 
 
 # helper to make printing look a bit nicer
