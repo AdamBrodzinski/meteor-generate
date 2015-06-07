@@ -8,7 +8,7 @@ Based on architecture used in large production apps. Generates secure settings b
 
 Customize the output with your own folder/file overrides so you can setup your own defaults.
 
---video--
+## Note, this repo is is flux and will drop controllers and move components over to React components instead.
 
 
 ### Installation
