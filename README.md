@@ -1,5 +1,8 @@
 ## Generate Scaffolding for Meteor
 
+### Notice
+I'm switching over my new apps to using React for the view layer and FlowRouter with serverside rendering. Checkout the react branch for updates on this. I'll still leave this branch the same for my (and your) legacy apps.
+
 Automate the common tasks used when building a Meteor app. Create 'pages', components,  controllers, collections & more.
 User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
 
