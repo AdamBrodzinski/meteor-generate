@@ -1,7 +1,11 @@
 ## Generate Scaffolding for Meteor
 
 ### Notice
-I'm switching over my new apps to using React for the view layer and FlowRouter with serverside rendering. Checkout the react branch for updates on this. I'll still leave this branch the same for my (and your) legacy apps.
+The layout in master will be changing soon. This new structure is geared towards promoting components and moving away from Iron Router's controllers. Instead that logic will be in the component/page scripts.
+
+Checkout the [Yo generator](https://github.com/AdamBrodzinski/generator-mgen) for the new progress. Eventually mgen will run this beind the scenes to give you a cleaner CLI API than Yo.
+
+In the future you can pin the release or run a local copy for legacy apps (I have it alised until I can migrate them).
 
 Automate the common tasks used when building a Meteor app. Create 'pages', components,  controllers, collections & more.
 User customizable templates and configuration. Meteor Generate borrows a few conventions from Rails but it still stays true to Meteor.
